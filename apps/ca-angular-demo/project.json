@@ -80,6 +80,53 @@
       "options": {
         "jestConfig": "apps/ca-angular-demo/jest.config.ts"
       }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "apps/ca-angular-demo/.storybook",
+        "browserTarget": "ca-angular-demo:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/ca-angular-demo",
+        "configDir": "apps/ca-angular-demo/.storybook",
+        "browserTarget": "ca-angular-demo:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "test-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "test-storybook -c apps/ca-angular-demo/.storybook --url=http://localhost:4400"
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "ca-angular-demo:build-storybook",
+        "staticFilePath": "dist/storybook/ca-angular-demo"
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "ca-angular-demo:build-storybook:ci"
+        }
+      }
     }
   }
 }

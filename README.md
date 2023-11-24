@@ -1,16 +1,27 @@
 # CaAngularDemo
 
 ## Tech Stack
-- [x] Singal
+- [x] Signal
 - [x] CA
 - [x] Hydration
-- [x] NX Monorepo
-- [x] Playwright
+- [x] NX-monorepo
+- [x] e2e-Playwright
 - [x] Storybook
+- [x] Component Test
+- [x] NGRX 
+- [x] Vite
+- [x] Esbuild 
 - 
 ```dotnetcli
+# nx
 $ npm install -g @nrwl/cli
+
+# angular
 $ npx create-nx-workspace ca-angular-demo
+
+# storybook
+$ nx g @nx/angular:storybook-configuration ca-angular-demo
+$ nx g @nx/angular:stories --project=ca-angular-demo
 ```
 
 
