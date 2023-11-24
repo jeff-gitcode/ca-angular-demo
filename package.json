@@ -2,7 +2,17 @@
   "name": "@ca-angular-demo/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev": "nx dev",
+    "build": "nx build",
+    "test": "nx test",
+    "test:client": "nx test ca-angular-demo",
+    "precommit": "nx lint",
+    "start:angular": "nx serve ca-angular-demo",
+    "test:e2e:angular": "nx run ca-angular-demo-e2e:e2e",
+    "test:component:angular": "nx run ca-angular-demo:component-test",
+    "test:storybook:angular": "nx run ca-angular-demo:storybook"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~17.0.0",
