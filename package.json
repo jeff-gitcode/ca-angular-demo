@@ -7,7 +7,7 @@
     "build": "nx build",
     "test": "nx test",
     "test:client": "nx test ca-angular-demo",
-    "precommit": "nx lint",
+    "precommit": "nx lint ca-angular-demo",
     "start:angular": "nx serve ca-angular-demo",
     "test:e2e:angular": "nx run ca-angular-demo-e2e:e2e",
     "test:component:angular": "nx run ca-angular-demo:component-test",

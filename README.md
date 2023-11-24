@@ -22,6 +22,14 @@ $ npx create-nx-workspace ca-angular-demo
 # storybook
 $ nx g @nx/angular:storybook-configuration ca-angular-demo
 $ nx g @nx/angular:stories --project=ca-angular-demo
+
+# yarn command
+$ yarn test:client
+$ yarn precommit
+$ yarn start:angular
+$ yarn test:e2e:angular
+$ yarn test:component:angular
+$ yarn test:storybook:angular
 ```
 
 
