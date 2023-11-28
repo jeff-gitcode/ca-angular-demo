@@ -13,6 +13,15 @@
 - [x] Esbuild 
 - 
 ```dotnetcli
+wsl --install
+https://docs.docker.com/desktop/install/windows-install/
+https://www.simplilearn.com/tutorials/git-tutorial/git-installation-on-windows
+https://git-scm.com/download/win
+https://github.com/microsoft/winget-cli
+https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git
+https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
+https://github.com/coreybutler/nvm-windows#installation--upgrades
+
 # nx
 $ npm install -g @nrwl/cli
 
