@@ -1,4 +1,4 @@
-# CaAngularDemo
+# Ca Angular Demo
 
 ## Tech Stack
 - [x] Signal
