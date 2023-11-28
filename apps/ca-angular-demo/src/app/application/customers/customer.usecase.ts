@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@angular/core";
 
 import { Customer } from "../../domain/customer";
-import { ICustomerRepository } from "../abstract/repository";
+import { ICustomerRepository } from "../abstract/irepository";
 import { ICustomerUseCase } from "../abstract/icustomer.usecase";
 
 

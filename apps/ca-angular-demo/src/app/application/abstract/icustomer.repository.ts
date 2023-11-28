@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { Customer } from '../../domain/customer';
-import { IRepository } from './repository';
+import { IRepository } from './irepository';
 
 @Injectable()
 export abstract class ICustomerRepository extends IRepository<Customer> {
