@@ -31,5 +31,17 @@ export class CustomersComponent implements OnInit {
     // });
   }
 
+  createCustomer(): void {
+    const customer: Customer = {
+      id: '1',
+      name: "John Doe",
+      email: "john.doe@email.com",
+      password: '1234567890',
+      token: ""
+    };
+
+    this.customerUseCase.createCustomer(customer).subscribe();
+  }
+
 
 }

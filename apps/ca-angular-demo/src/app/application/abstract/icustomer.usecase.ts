@@ -4,6 +4,6 @@ import { Observable } from "rxjs";
 
 @Injectable()
 export abstract class ICustomerUseCase {
-  // abstract createCustomer(customer: Customer): Promise<Customer>;
+  abstract createCustomer(customer: Customer): Observable<void>;
   abstract getCustomers(): Observable<Customer[]>;
 }

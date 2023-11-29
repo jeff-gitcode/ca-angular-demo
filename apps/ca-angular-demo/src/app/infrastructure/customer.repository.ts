@@ -19,10 +19,9 @@ export class CustomerRepository implements ICustomerRepository {
     return customers;
   }
 
-  // async create(entity: Customer): Promise<Customer> {
-  //   this.customers.push(entity);
-  //   return Promise.resolve(entity);
-  // }
+  create(entity: Customer): Observable<void> {
+    return customers.update((r: Customer[]) => r.push(entity));
+  }
 
   // async update(entity: Customer): Promise<Customer> {
   //   const index = this.customers.findIndex((c) => c.id === entity.id);
