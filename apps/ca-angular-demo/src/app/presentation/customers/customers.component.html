@@ -1,0 +1,39 @@
+<p>customers works!</p>
+<ul>
+  <li *ngFor="let todo of customers$ | async">
+
+  </li>
+</ul>
+
+<!-- <input type="text" [(ngModel)]="newTodoTitle"> -->
+<!-- <button (click)="createTodo({ title: newTodoTitle })">Create Todo</button> -->
+<!-- <table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let todo of todos">
+      <td>{{ todo.date }}</td>
+      <td>{{ todo.name }}</td>
+      <td>{{ todo.status }}</td>
+      <td>
+        <button (click)="editTodo(todo)">Edit</button>
+        <button (click)="deleteTodo(todo)">Delete</button>
+      </td>
+    </tr>
+    <tr *ngFor="let todo of todoListService.todoData()">
+      <td>{{ todo.date }}</td>
+      <td>{{ todo.name }}</td>
+      <td>{{ todo.status }}</td>
+      <td>
+        <button (click)="editTodo(todo)">Edit</button>
+        <button (click)="deleteTodo(todo)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table> -->
