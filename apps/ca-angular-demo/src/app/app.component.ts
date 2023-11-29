@@ -1,9 +1,10 @@
-import { ApplicationModule, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { NavComponent } from './presentation/nav/nav.component';
 import { CustomersComponent } from './presentation/customers/customers.component';
 import { InfrastructureModule } from './infrastructure/infrastructure.module';
+import { ApplicationModule } from './application/application.module';
 
 @Component({
   standalone: true,

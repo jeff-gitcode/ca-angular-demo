@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, WritableSignal } from "@angular/core";
 import { ICustomerRepository } from "../application/abstract/irepository";
 import { Customer } from "../domain/customer";
 import { customers } from "./customer.signal";
@@ -15,12 +15,13 @@ export class CustomerRepository implements ICustomerRepository {
   //   return Promise.resolve(customer || null);
   // }
 
-  getAll(): Observable<Customer[]> {
+  getAll(): WritableSignal<Customer[]> {
     return customers;
   }
 
-  create(entity: Customer): Observable<void> {
-    return customers.update((r: Customer[]) => r.push(entity));
+  create(entity: Customer): void {
+    const newCustomeor = customers.update(r => [...r, entity]);
+    return newCustomeor;
   }
 
   // async update(entity: Customer): Promise<Customer> {

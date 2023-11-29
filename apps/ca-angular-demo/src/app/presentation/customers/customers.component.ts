@@ -1,28 +1,31 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output, WritableSignal, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ICustomerUseCase } from '../../application/abstract/icustomer.usecase';
 import { Observable } from 'rxjs';
 import { Customer } from '../../domain/customer';
+import { InfrastructureModule } from '../../infrastructure/infrastructure.module';
+import { ApplicationModule } from '../../application/application.module';
 
 @Component({
   selector: 'ca-angular-demo-customers',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ApplicationModule, InfrastructureModule],
   templateUrl: './customers.component.html',
   styleUrl: './customers.component.css',
 })
 export class CustomersComponent implements OnInit {
   @Output() editTodoEvent = new EventEmitter<any>();
   @Input() lastData: any;
-  @Input() todos: any;
-  customers$: Observable<Customer[]> =  new Observable<Customer[]>();
+  @Input() customers: WritableSignal<Customer[]> = signal([]);
+
   newTodoTitle: string = '';
   testVar: any;
 
-  constructor(private customerUseCase: ICustomerUseCase) { }
+  constructor(@Inject(ICustomerUseCase)private customerUseCase: ICustomerUseCase) { }
 
   ngOnInit(): void {
-    this.customers$ = this.customerUseCase.getCustomers();
+    this.customers = this.customerUseCase.getCustomers();
+
     // this.testVar = this.todos;
     // console.log('TEST: : : : ', this.testVar);
     // this.customerUseCase.getCustomers().subscribe((data: any) => {
@@ -40,7 +43,7 @@ export class CustomersComponent implements OnInit {
       token: ""
     };
 
-    this.customerUseCase.createCustomer(customer).subscribe();
+    this.customerUseCase.createCustomer(customer);
   }
 
 

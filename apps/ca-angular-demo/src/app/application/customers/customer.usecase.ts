@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@angular/core";
+import { Inject, Injectable, WritableSignal } from "@angular/core";
 
 import { Customer } from "../../domain/customer";
 import { ICustomerRepository } from "../abstract/irepository";
@@ -11,13 +11,13 @@ export class CustomerUseCase implements ICustomerUseCase{
   constructor(@Inject(ICustomerRepository)private customerRepository: ICustomerRepository) {
   }
 
-  getCustomers(): Observable<Customer[]> {
+  getCustomers(): WritableSignal<Customer[]> {
     // Add your implementation here
     // For example, you can get the customers from the repository
     return this.customerRepository.getAll();
   }
 
-  createCustomer(customer: Customer): Observable<void> {
+  createCustomer(customer: Customer): void {
     // Add your implementation here
     // For example, you can validate the customer data, generate an ID, and save it to the repository
     return this.customerRepository.create(customer);

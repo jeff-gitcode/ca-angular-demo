@@ -1,9 +1,9 @@
 <p>customers works!</p>
-<ul>
-  <li *ngFor="let todo of customers$ | async">
-
-  </li>
-</ul>
+<div *ngIf="customers().length">
+  <ul>
+    <li *ngFor="let customer of customers()">{{customer.id}} | {{customer.name}} | {{customer.email}} | {{customer.password}} | {{customer.token}}</li>
+  </ul>
+</div>
 <button (click)="createCustomer()">Create Customer</button>
 
 <!-- <input type="text" [(ngModel)]="newTodoTitle"> -->
