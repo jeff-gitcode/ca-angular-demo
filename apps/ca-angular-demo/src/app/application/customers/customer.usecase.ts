@@ -20,7 +20,7 @@ export class CustomerUseCase implements ICustomerUseCase{
     return this.service.update(customer);
   }
 
-  getCustomers(): Signal<Customer[]> {
+  getCustomers(): WritableSignal<Customer[]> {
     // Add your implementation here
     // For example, you can get the customers from the repository
     return this.service.getAll();

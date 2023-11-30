@@ -17,7 +17,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 export class CustomersComponent implements OnInit {
   @Output() editTodoEvent = new EventEmitter<any>();
   @Input() lastData: any;
-  @Input() customers: Signal<Customer[]> = signal([]);
+  @Input() customers: WritableSignal<Customer[]> = signal([]);
   @Input() customer: Customer = {} as Customer;
 
   newTodoTitle: string = '';
@@ -47,11 +47,11 @@ export class CustomersComponent implements OnInit {
     };
 
     this.customerUseCase.createCustomer(customer).subscribe((data: any) => {
-      console.log('data in list ::', data);
-      this.customer = data
+      console.log('create data in list ::', data);
+      this.customer = data;
+      this.customers.update(r => [...r, data]);
     });
     // this.customer = toSignal(user$, { initialValue: {} as Customer });
-    // this.customers.update(r => [...r, customer]);
   }
 
   updateCustomer(): void {
@@ -65,15 +65,24 @@ export class CustomersComponent implements OnInit {
     };
 
     this.customerUseCase.updateCustomer(customer).subscribe((data: any) => {
-      console.log('data in list ::', data);
-      this.customer = data
+      console.log('update data in list ::', data);
+      this.customer = data;
+      this.customers.update(r => {
+        console.log('r ::', r);
+        return [...(r.filter((item: Customer) => item.id.toString() !== data.id)), data];
+      });
     });
   }
 
   deleteCustomer() {
-    this.customerUseCase.deleteCustomer('11').subscribe((data: any) => {
-      console.log('data in list ::', data);
-      this.customer = data
-    });;
+    const id = "11";
+    this.customerUseCase.deleteCustomer(id).subscribe((data: any) => {
+      console.log('delete data in list ::', data);
+      this.customer = data;
+      this.customers.update(r => {
+        console.log('r ::', r);
+        return [...(r.filter((item: Customer) => item.id.toString() !== id))];
+      });
+    });
   }
 }

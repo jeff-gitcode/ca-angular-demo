@@ -45,7 +45,7 @@ export class CustomerService implements ICustomerService {
 
     return this.http.patch<Customer>(`${this.apiUrl}/${customer.id}`, customer, this.httpOptions).pipe(
       tap((data: Customer) => {
-        console.log(this.customers);
+        console.log(data);
       }),
       catchError(this.handleError)
     );
@@ -57,14 +57,15 @@ export class CustomerService implements ICustomerService {
         // let indexToUpdate = this.customers.findIndex(item => item.id === newItem.id);
         // this.itemArray.items[indexToUpdate] = newItem;
 
-        this.customers.update(r => [...r, data]);
-        console.log(this.customers);
+        // this.customers.update(r => [...r, data]);
+        console.log(data);
       }),
       catchError(this.handleError)
     );
   }
 
-  getAll(): Signal<Customer[]> {
-    return this.customers.asReadonly();
+  getAll(): WritableSignal<Customer[]> {
+    // return this.customers.asReadonly();
+    return this.customers;
   }
 }
