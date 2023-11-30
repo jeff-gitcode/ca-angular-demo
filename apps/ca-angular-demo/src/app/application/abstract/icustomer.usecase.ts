@@ -1,4 +1,4 @@
-import { Injectable, Signal } from "@angular/core";
+import { Injectable, Signal, WritableSignal } from "@angular/core";
 import { Customer } from "../../domain/customer";
 import { Observable } from "rxjs";
 
