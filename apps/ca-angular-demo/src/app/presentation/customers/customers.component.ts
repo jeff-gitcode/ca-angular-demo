@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Input, OnInit, Output, WritableSignal, signal } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output, Signal, WritableSignal, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ICustomerUseCase } from '../../application/abstract/icustomer.usecase';
 import { Observable } from 'rxjs';
@@ -16,7 +16,7 @@ import { ApplicationModule } from '../../application/application.module';
 export class CustomersComponent implements OnInit {
   @Output() editTodoEvent = new EventEmitter<any>();
   @Input() lastData: any;
-  @Input() customers: WritableSignal<Customer[]> = signal([]);
+  @Input() customers: Signal<Customer[]> = signal([]);
 
   newTodoTitle: string = '';
   testVar: any;

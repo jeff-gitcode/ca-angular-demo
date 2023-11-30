@@ -1,17 +1,14 @@
-import { Injectable, Signal, WritableSignal } from "@angular/core";
-import { Customer } from "../../domain/customer";
+import { Injectable, Signal } from "@angular/core";
 import { Observable } from "rxjs";
 
+import { Customer } from "../../domain/customer";
+
 @Injectable()
-export abstract class IRepository<T> {
+export abstract class ICustomerService {
   // abstract getById(id: string): Promise<T | null>;
-  abstract getAll(): Signal<T[]>;
+  abstract getAll(): Signal<Customer[]>;
   abstract create(entity: Customer): void;
   // abstract create(entity: T): Promise<T>;
   // abstract update(entity: T): Promise<T>;
   // abstract delete(id: string): Promise<void>;
-}
-
-@Injectable()
-export abstract class ICustomerRepository extends IRepository<Customer> {
 }

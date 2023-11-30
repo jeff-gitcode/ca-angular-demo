@@ -1,4 +1,4 @@
-import { Injectable, WritableSignal } from "@angular/core";
+import { Injectable, Signal, WritableSignal } from "@angular/core";
 import { ICustomerRepository } from "../application/abstract/irepository";
 import { Customer } from "../domain/customer";
 import { customers } from "./customer.signal";
@@ -15,7 +15,7 @@ export class CustomerRepository implements ICustomerRepository {
   //   return Promise.resolve(customer || null);
   // }
 
-  getAll(): WritableSignal<Customer[]> {
+  getAll(): Signal<Customer[]> {
     return customers;
   }
 
