@@ -5,7 +5,7 @@ import { Customer } from "../../domain/customer";
 
 @Injectable()
 export abstract class ICustomerService {
-  abstract delete(arg0: string): void;
+  abstract delete(id: string): Observable<Object>;
   abstract update(customer: Customer): Observable<Customer>;
   // abstract getById(id: string): Promise<T | null>;
   abstract getAll(): Signal<Customer[]>;

@@ -25,8 +25,8 @@ export class CustomerService implements ICustomerService {
   users = toSignal(this.customers$, { initialValue: [] as Customer[] });
   constructor(private http: HttpClient) { }
 
-  delete(id: string): void {
-    this.http.delete(`${this.apiUrl}/${id}`, this.httpOptions).pipe(
+  delete(id: string): Observable<Object> {
+    return this.http.delete(`${this.apiUrl}/${id}`, this.httpOptions).pipe(
       tap(data => console.log(data)),
       catchError(this.handleError)
     );

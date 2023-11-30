@@ -71,6 +71,9 @@ export class CustomersComponent implements OnInit {
   }
 
   deleteCustomer() {
-    this.customerUseCase.deleteCustomer('11');
+    this.customerUseCase.deleteCustomer('11').subscribe((data: any) => {
+      console.log('data in list ::', data);
+      this.customer = data
+    });;
   }
 }

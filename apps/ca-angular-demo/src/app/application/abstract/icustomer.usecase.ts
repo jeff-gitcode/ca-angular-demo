@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 
 @Injectable()
 export abstract class ICustomerUseCase {
-  abstract deleteCustomer(arg0: string): void;
+  abstract deleteCustomer(id: string): Observable<Object>;
   abstract updateCustomer(customer: Customer): Observable<Customer>;
   abstract createCustomer(customer: Customer): Observable<Customer>;
   abstract getCustomers(): Signal<Customer[]>;

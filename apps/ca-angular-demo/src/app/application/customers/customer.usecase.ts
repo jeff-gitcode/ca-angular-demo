@@ -12,8 +12,8 @@ export class CustomerUseCase implements ICustomerUseCase{
   constructor(@Inject(ICustomerService)private service: ICustomerService) {
   }
 
-  deleteCustomer(arg0: string): void {
-    return this.service.delete(arg0);
+  deleteCustomer(id: string): Observable<Object> {
+    return this.service.delete(id);
   }
 
   updateCustomer(customer: Customer): Observable<Customer> {
