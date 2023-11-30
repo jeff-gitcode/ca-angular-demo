@@ -4,4 +4,7 @@ export interface Customer {
   readonly email: string;
   readonly password?: string;
   readonly token?: string;
+  readonly phone?: string;
+  readonly website?: string;
+  readonly company?: any;
 }

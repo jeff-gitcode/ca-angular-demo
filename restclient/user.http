@@ -1,0 +1,90 @@
+@host={{$dotenv HOST}}
+@token={{$dotenv TOKEN}}
+
+### get all users
+GET {{host}}/users HTTP/1.1
+accept: text/plain
+content-type: application/json
+
+
+### create new user
+POST {{host}}/users HTTP/1.1
+accept: text/plain
+content-type: application/json
+
+{
+
+    "name": "John",
+    "username": "John",
+    "email": "john@john.com",
+    "phone": "123",
+    "website": "www.org",
+    "company": {
+    }
+}
+
+### update user
+PATCH {{host}}/users/11 HTTP/1.1
+content-type: application/json; charset=UTF-8
+
+{
+  "name": "John Update",
+  "username": "John",
+  "email": "john@john.com",
+  "phone": "123",
+  "website": "www.org",
+  "company": {},
+  "id": 11
+}
+
+### delete user
+DELETE {{host}}/users/11 HTTP/1.1
+
+### RegisterUserFunction(Admin)
+POST {{host}}/api/RegisterUserFunction HTTP/1.1
+accept: text/plain
+content-type: application/json
+
+{
+  "name": "Admin",
+  "role": "Admin",
+  "email": "admin@email.com",
+  "password": "password",
+  "token":"token"
+}
+
+### LoginUserFunction (User)
+POST {{host}}/api/LoginUserFunction HTTP/1.1
+accept: text/plain
+content-type: application/json
+
+{
+  "name": "Jeff",
+  "role": "User",
+  "email": "user@email.com",
+  "password": "password"
+}
+
+### LoginUserFunction (Admin)
+POST {{host}}/api/LoginUserFunction HTTP/1.1
+accept: text/plain
+content-type: application/json
+
+{
+  "name": "Admin",
+  "role": "Admin",
+  "email": "admin@email.com",
+  "password": "password"
+}
+
+### SearchUserFunction
+POST {{host}}/api/SearchUserFunction HTTP/1.1
+Authorization: Bearer {{token}}
+accept: text/plain
+content-type: application/json
+
+{
+  "name": "John",
+  "page": 1,
+  "size": 1
+}

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Customer } from '../../domain/customer';
 import { InfrastructureModule } from '../../infrastructure/infrastructure.module';
 import { ApplicationModule } from '../../application/application.module';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'ca-angular-demo-customers',
@@ -17,11 +18,12 @@ export class CustomersComponent implements OnInit {
   @Output() editTodoEvent = new EventEmitter<any>();
   @Input() lastData: any;
   @Input() customers: Signal<Customer[]> = signal([]);
+  @Input() customer: Customer = {} as Customer;
 
   newTodoTitle: string = '';
   testVar: any;
 
-  constructor(@Inject(ICustomerUseCase)private customerUseCase: ICustomerUseCase) { }
+  constructor(@Inject(ICustomerUseCase) private customerUseCase: ICustomerUseCase) { }
 
   ngOnInit(): void {
     this.customers = this.customerUseCase.getCustomers();
@@ -39,12 +41,36 @@ export class CustomersComponent implements OnInit {
       id: '1',
       name: "John Doe",
       email: "john.doe@email.com",
-      password: '1234567890',
-      token: ""
+      phone: "1234567890",
+      website: "www.johndoe.com",
+      company: {}
     };
 
-    this.customerUseCase.createCustomer(customer);
+    this.customerUseCase.createCustomer(customer).subscribe((data: any) => {
+      console.log('data in list ::', data);
+      this.customer = data
+    });
+    // this.customer = toSignal(user$, { initialValue: {} as Customer });
+    // this.customers.update(r => [...r, customer]);
   }
 
+  updateCustomer(): void {
+    const customer: Customer = {
+      id: '11',
+      name: "John Doe Update",
+      email: "john.doe@email.com",
+      phone: "1234567890",
+      website: "www.johndoe.com",
+      company: {}
+    };
 
+    this.customerUseCase.updateCustomer(customer).subscribe((data: any) => {
+      console.log('data in list ::', data);
+      this.customer = data
+    });
+  }
+
+  deleteCustomer() {
+    this.customerUseCase.deleteCustomer('11');
+  }
 }

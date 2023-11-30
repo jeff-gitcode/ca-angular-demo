@@ -4,7 +4,13 @@
     <li *ngFor="let customer of customers()">{{customer.id}} | {{customer.name}} | {{customer.email}} | {{customer.password}} | {{customer.token}}</li>
   </ul>
 </div>
-<button (click)="createCustomer()">Create Customer</button>
+<button (click)="createCustomer()">Create</button>
+<button (click)="updateCustomer()">Update</button>
+<button (click)="deleteCustomer()">Delete</button>
+<div *ngIf="customer">
+  <p>Customer: {{customer.id}} | {{customer.name}} | {{customer.email}} | {{customer.password}} | {{customer.token}}</p>
+  <!-- <button (click)="updateCustomer()">Update Customer</button>
+  <button (click)="deleteCustomer()">Delete Customer</button> -->
 
 <!-- <input type="text" [(ngModel)]="newTodoTitle"> -->
 <!-- <button (click)="createTodo({ title: newTodoTitle })">Create Todo</button> -->
