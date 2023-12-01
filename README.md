@@ -11,6 +11,7 @@
 - [x] NGRX 
 - [x] Vite
 - [x] Esbuild 
+- [x] Bootstrap
 - 
 ```dotnetcli
 wsl --install
@@ -49,8 +50,12 @@ $ nx generate @nrwl/angular:component presentation/customer --project=ca-angular
 # angular cli
 $ npm install -g @angular/cli
 
-$ yarn add bootstrap
+# bootstrap
+$ yarn add bootstrap bootstrap-icons
+$ yarn add @ng-bootstrap/ng-bootstrap@next
 
+#ngx-formly
+$ yarn add @angular/forms @ngx-formly/core @ngx-formly/bootstrap
 ```
 
 

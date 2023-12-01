@@ -18,16 +18,17 @@ import { RouterModule, Routes } from '@angular/router';
 export class CustomersComponent implements OnInit {
   @Output() editTodoEvent = new EventEmitter<any>();
   @Input() lastData: any;
-  @Input() customers: WritableSignal<Customer[]> = signal([]);
+  @Input() customers: Signal<Customer[]> = signal([]);
   @Input() customer: Customer = {} as Customer;
 
   newTodoTitle: string = '';
   testVar: any;
 
-  constructor(@Inject(ICustomerUseCase) private customerUseCase: ICustomerUseCase) { }
+  constructor(@Inject(ICustomerUseCase) private customerUseCase: ICustomerUseCase) {
+    this.customers = toSignal(this.customerUseCase.getCustomers(), { initialValue: [] });
+  }
 
   ngOnInit(): void {
-    this.customers = this.customerUseCase.getCustomers();
 
     // this.testVar = this.todos;
     // console.log('TEST: : : : ', this.testVar);
@@ -37,23 +38,23 @@ export class CustomersComponent implements OnInit {
     // });
   }
 
-  createCustomer(): void {
-    const customer: Customer = {
-      id: '1',
-      name: "John Doe",
-      email: "john.doe@email.com",
-      phone: "1234567890",
-      website: "www.johndoe.com",
-      company: {}
-    };
+  // createCustomer(): void {
+  //   const customer: Customer = {
+  //     id: '1',
+  //     name: "John Doe",
+  //     email: "john.doe@email.com",
+  //     phone: "1234567890",
+  //     website: "www.johndoe.com",
+  //     company: {}
+  //   };
 
-    this.customerUseCase.createCustomer(customer).subscribe((data: any) => {
-      console.log('create data in list ::', data);
-      this.customer = data;
-      this.customers.update(r => [...r, data]);
-    });
-    // this.customer = toSignal(user$, { initialValue: {} as Customer });
-  }
+  //   this.customerUseCase.createCustomer(customer).subscribe((data: any) => {
+  //     console.log('create data in list ::', data);
+  //     this.customer = data;
+  //     this.customers.update(r => [...r, data]);
+  //   });
+  //   // this.customer = toSignal(user$, { initialValue: {} as Customer });
+  // }
 
   updateCustomer(): void {
     const customer: Customer = {
@@ -68,10 +69,10 @@ export class CustomersComponent implements OnInit {
     this.customerUseCase.updateCustomer(customer).subscribe((data: any) => {
       console.log('update data in list ::', data);
       this.customer = data;
-      this.customers.update(r => {
-        console.log('r ::', r);
-        return [...(r.filter((item: Customer) => item.id.toString() !== data.id)), data];
-      });
+      // this.customers.update(r => {
+      //   console.log('r ::', r);
+      //   return [...(r.filter((item: Customer) => item.id.toString() !== data.id)), data];
+      // });
     });
   }
 
@@ -80,10 +81,10 @@ export class CustomersComponent implements OnInit {
     this.customerUseCase.deleteCustomer(id).subscribe((data: any) => {
       console.log('delete data in list ::', data);
       this.customer = data;
-      this.customers.update(r => {
-        console.log('r ::', r);
-        return [...(r.filter((item: Customer) => item.id.toString() !== id))];
-      });
+      // this.customers.update(r => {
+      //   console.log('r ::', r);
+      //   return [...(r.filter((item: Customer) => item.id.toString() !== id))];
+      // });
     });
   }
 }

@@ -5,7 +5,6 @@ import { toSignal, toObservable } from '@angular/core/rxjs-interop';
 
 import { Customer } from '../domain/customer';
 import { ICustomerService } from '../application/abstract/icustomer.service';
-import { customers } from './customer.signal';
 import { toWritableSignal } from './toWritableSignal';
 
 @Injectable({
@@ -25,7 +24,7 @@ export class CustomerService implements ICustomerService {
   }
 
   // customers = toSignal(this.customers$, { initialValue: [] as Customer[] });
-  customers = toWritableSignal(this.customers$, [] as Customer[]);
+  // customers = toWritableSignal(this.customers$, [] as Customer[]);
   selectedCustomer = signal("0");
   constructor(private http: HttpClient) { }
 
@@ -64,8 +63,14 @@ export class CustomerService implements ICustomerService {
     );
   }
 
-  getAll(): WritableSignal<Customer[]> {
+  getAll(): Observable<Customer[]> {
     // return this.customers.asReadonly();
-    return this.customers;
+    // return this.customers;
+    return this.http.get<Customer[]>(this.apiUrl).pipe(
+      tap(data => {
+        console.log(data);
+      }),
+      catchError(this.handleError)
+    );
   }
 }

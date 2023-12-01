@@ -8,7 +8,7 @@ export abstract class ICustomerService {
   abstract delete(id: string): Observable<Object>;
   abstract update(customer: Customer): Observable<Customer>;
   // abstract getById(id: string): Promise<T | null>;
-  abstract getAll(): WritableSignal<Customer[]>;
+  abstract getAll(): Observable<Customer[]>;
   abstract create(entity: Customer): Observable<Customer>;
   // abstract create(entity: T): Promise<T>;
   // abstract update(entity: T): Promise<T>;

@@ -7,5 +7,5 @@ export abstract class ICustomerUseCase {
   abstract deleteCustomer(id: string): Observable<Object>;
   abstract updateCustomer(customer: Customer): Observable<Customer>;
   abstract createCustomer(customer: Customer): Observable<Customer>;
-  abstract getCustomers(): WritableSignal<Customer[]>;
+  abstract getCustomers(): Observable<Customer[]>;
 }

@@ -239,10 +239,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/forms@~17.0.0":
-  version "17.0.4"
-  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-17.0.4.tgz#a5aafcf99893710741c6ee5f20370643f59c42f7"
-  integrity sha512-R5J87dfJNWwi5SESD7tRkZnqG4u8KNAT4vImX4oG70/6vWioKUSWpLoSp1gpzy9UW51E85AKb8DNvIex7LclSg==
+"@angular/forms@^17.0.0":
+  version "17.0.5"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-17.0.5.tgz#4a71179dffd232390f9bbf356c8fdbeea0b3f34e"
+  integrity sha512-d91Rre/NK+SgamF1OJmDJUx+Zs8M7qFmrKu7c+hNsXPe8J/fkMNoWFikne/WSsegwY929E1xpeqvu/KXQt90ug==
   dependencies:
     tslib "^2.3.0"
 
@@ -2477,6 +2477,20 @@
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-17.0.3.tgz#3be3358353df2cad8daad089187a6bcc2e59d0e7"
   integrity sha512-H39WQ/tM6kOErfiyU6QkPasMtuOZHbm6INkirSR3ol4e93o6gLJ0ptwg3IQlyGtZK2QexWagPC6jzsdGIaN3iw==
+
+"@ngx-formly/bootstrap@^6.2.2":
+  version "6.2.2"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/bootstrap/-/bootstrap-6.2.2.tgz#1a0114658b7faa6b3aabb7a65749024ddd86483a"
+  integrity sha512-k/CdpbvCjO61o2rFuW8wr5ElG2YxU3jmcZTw0MQICi2TdBxRt2txF4xV9+gF0yrQZTcZFfVsrPRwxXRR2O4e+A==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngx-formly/core@^6.2.2":
+  version "6.2.2"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/core/-/core-6.2.2.tgz#c16d2846eb0610709d2724d717056d19acad0823"
+  integrity sha512-tG7TT0SsxlEs8ipndxiqO6xX06RCW81S4flPj+ByDgUACtZE/l+l8PEmjvJRIEv5dGJQ73cfxbnVmBoZR/FrEw==
+  dependencies:
+    tslib "^2.0.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
