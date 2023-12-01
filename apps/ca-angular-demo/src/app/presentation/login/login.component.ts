@@ -1,18 +1,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 
 import { Customer } from '../../domain/customer';
-import { IAuthService } from '../../application/abstract/iauth.service';
 import { IAuthUseCase } from '../../application/abstract/iauth.usecase';
 
 @Component({
   selector: 'ca-angular-demo-login',
   standalone: true,
-  imports: [RouterModule, FormsModule, ReactiveFormsModule, FormlyModule, FormlyBootstrapModule, CommonModule],
+  imports: [ FormsModule, ReactiveFormsModule, FormlyModule, FormlyBootstrapModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -63,10 +62,11 @@ export class LoginComponent implements OnInit {
 
     if (val.email && val.password) {
       // this.router.navigateByUrl('/customer');
-      if (this.authUseCase.login(val.email, val.password)) {
-        console.log("User is logged in");
-        this.router.navigateByUrl('/customer');
-      }
+      // if (this.authUseCase.login(val.email, val.password)) {
+      //   console.log("User is logged in");
+        this.router.navigate(['/customer']);
+        // this.router.navigateByUrl('/customer');
+      // }
       // .subscribe(
       //     () => {
       //         console.log("User is logged in");

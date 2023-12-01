@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 import { IAuthService } from "../abstract/iauth.service";
 import { IAuthUseCase } from "../abstract/iauth.usecase";
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthUseCase implements IAuthUseCase {
   constructor(private authService: IAuthService) {}
 

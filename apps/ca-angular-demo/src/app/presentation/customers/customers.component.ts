@@ -1,12 +1,9 @@
-import { Component, EventEmitter, Inject, Input, OnInit, Output, Signal, WritableSignal, signal } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output, Signal, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ICustomerUseCase } from '../../application/abstract/icustomer.usecase';
-import { Observable } from 'rxjs';
 import { Customer } from '../../domain/customer';
-import { InfrastructureModule } from '../../infrastructure/infrastructure.module';
-import { ApplicationModule } from '../../application/application.module';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'ca-angular-demo-customers',
