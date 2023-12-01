@@ -6,7 +6,7 @@ import { FormlyFieldConfig, FormlyForm, FormlyModule } from '@ngx-formly/core';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { Customer } from '../../domain/customer';
 import { ICustomerUseCase } from '../../application/abstract/icustomer.usecase';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'ca-angular-demo-customer',
@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
   styleUrl: './customer.component.css',
 })
 export class CustomerComponent implements OnInit {
+  id: string = '';
   form!: FormGroup;
   model: Customer = {
     id: '',
@@ -56,10 +57,18 @@ export class CustomerComponent implements OnInit {
     }
   ];
 
-  constructor(@Inject(ICustomerUseCase) private customerUseCase: ICustomerUseCase, private router: Router) { }
+  constructor(@Inject(ICustomerUseCase) private customerUseCase: ICustomerUseCase, private route: ActivatedRoute, private router: Router) {
+
+
+  }
 
   ngOnInit(): void {
     this.form = new FormGroup({});
+    this.id = this.route.snapshot.params['id'];
+    this.customerUseCase.getCustomers().subscribe((data: any) => {
+      console.log('data in edit ::', this.id);
+      this.model = data.filter((item: Customer) => item.id.toString() === this.id)[0];
+    });
     // this.form = new FormGroup({
     //   name: new FormControl('', [Validators.required]),
     //   email: new FormControl('', [Validators.required]),
@@ -74,10 +83,17 @@ export class CustomerComponent implements OnInit {
   submit() {
     console.log(this.form.value);
 
-    this.customerUseCase.createCustomer(this.model).subscribe((data: any) => {
-      console.log('create data in list ::', data);
-      this.model = data;
-    });
+    if (this.model.id === 'new') {
+      this.customerUseCase.createCustomer(this.model).subscribe((data: any) => {
+        console.log('create data in list ::', data);
+        this.model = data;
+      });
+    } else {
+      this.customerUseCase.updateCustomer(this.model).subscribe((data: any) => {
+        console.log('create data in list ::', data);
+        this.model = data;
+      });
+    }
 
     this.router.navigateByUrl('customer');
   }

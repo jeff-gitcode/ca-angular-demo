@@ -1,14 +1,14 @@
 <p>customer works!</p>
 <div class="container">
-  <div *ngIf="model.id !== 'new'; else loggedOut">
+  <div *ngIf="model.id === 'new'; else loggedOut">
     <h1>Create</h1>
   </div>
 
   <ng-template #loggedOut>
-    <h1>Update</h1>
+    <h1>Update Id = {{model.id}}</h1>
   </ng-template>
 
-  <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+  <a href="#" routerLink="/customer" class="btn btn-primary">Back</a>
 
   <form [formGroup]="form" (ngSubmit)="submit()">
     <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
