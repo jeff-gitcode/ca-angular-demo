@@ -1,5 +1,34 @@
 <p>customers works!</p>
-<div *ngIf="customers().length">
+
+<div class="container">
+  <h1>List</h1>
+
+  <a href="#" routerLink="/customer/details/new" class="btn btn-success">Create New</a>
+
+  <table class="table table-striped">
+      <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th width="250px">Action</th>
+            </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor="let post of customers()">
+              <td>{{ post.id }}</td>
+              <td>{{ post.name }}</td>
+              <td>{{ post.email }}</td>
+              <td>
+                <a href="#" [routerLink]="['details/', post.id]" class="btn btn-primary">Edit</a>
+                <button type="button" (click)="deleteCustomer(post.id)" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+      </tbody>
+  </table>
+</div>
+
+<!-- <div *ngIf="customers().length">
   <ul>
     <li *ngFor="let customer of customers()">{{customer.id}} | {{customer.name}} | {{customer.email}} | {{customer.password}} | {{customer.token}}</li>
   </ul>
@@ -8,7 +37,9 @@
 <button (click)="updateCustomer()">Update</button>
 <button (click)="deleteCustomer()">Delete</button>
 <div *ngIf="customer">
-  <p>Customer: {{customer.id}} | {{customer.name}} | {{customer.email}} | {{customer.password}} | {{customer.token}}</p>
+  <p>Customer: {{customer.id}} | {{customer.name}} | {{customer.email}} | {{customer.password}} | {{customer.token}}</p> -->
+
+
   <!-- <button (click)="updateCustomer()">Update Customer</button>
   <button (click)="deleteCustomer()">Delete Customer</button> -->
 

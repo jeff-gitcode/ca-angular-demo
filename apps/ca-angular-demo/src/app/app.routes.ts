@@ -1,7 +1,9 @@
 import { Route } from '@angular/router';
+
 import { LoginComponent } from './presentation/login/login.component';
 import { NavComponent } from './presentation/nav/nav.component';
 import { CustomersComponent } from './presentation/customers/customers.component';
+import { CustomerComponent } from './presentation/customer/customer.component';
 
 export const appRoutes: Route[] = [
   {
@@ -13,7 +15,11 @@ export const appRoutes: Route[] = [
     component: LoginComponent
   },
   {
-    path: 'dashboard',
+    path: 'customer',
     component: CustomersComponent
+  },
+  {
+    path: 'customer/details/:id',
+    component: CustomerComponent
   },
 ];

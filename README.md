@@ -43,9 +43,13 @@ $ yarn test:storybook:angular
 # create components
 $ nx generate @nrwl/angular:component presentation/nav --project=ca-angular-demo
 $ nx generate @nrwl/angular:component presentation/login --project=ca-angular-demo
+$ nx generate @nrwl/angular:component presentation/customers --project=ca-angular-demo
+$ nx generate @nrwl/angular:component presentation/customer --project=ca-angular-demo
 
 # angular cli
-# npm install -g @angular/cli
+$ npm install -g @angular/cli
+
+$ yarn add bootstrap
 
 ```
 

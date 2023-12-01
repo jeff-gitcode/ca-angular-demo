@@ -6,11 +6,12 @@ import { Customer } from '../../domain/customer';
 import { InfrastructureModule } from '../../infrastructure/infrastructure.module';
 import { ApplicationModule } from '../../application/application.module';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'ca-angular-demo-customers',
   standalone: true,
-  imports: [CommonModule, ApplicationModule, InfrastructureModule],
+  imports: [RouterModule, CommonModule, ApplicationModule, InfrastructureModule],
   templateUrl: './customers.component.html',
   styleUrl: './customers.component.css',
 })
@@ -74,8 +75,8 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  deleteCustomer() {
-    const id = "11";
+  deleteCustomer(id: string) {
+    //const id = "11";
     this.customerUseCase.deleteCustomer(id).subscribe((data: any) => {
       console.log('delete data in list ::', data);
       this.customer = data;
