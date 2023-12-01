@@ -12,11 +12,13 @@ import { toWritableSignal } from './toWritableSignal';
 })
 export class CustomerService implements ICustomerService {
   private apiUrl = 'https://jsonplaceholder.typicode.com/users';
-  private customers$ = this.http.get<Customer[]>(this.apiUrl);
+  // private customers$ = this.http.get<Customer[]>(this.apiUrl);
+  private localCustomers: Customer[] = [] as Customer[];
   private handleError(error: any) {
     console.error(error);                                       //Created a function to handle and log errors, in case
     return throwError(error);
   }
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json; charset=UTF-8'
@@ -57,6 +59,7 @@ export class CustomerService implements ICustomerService {
         // this.itemArray.items[indexToUpdate] = newItem;
 
         // this.customers.update(r => [...r, data]);
+        this.localCustomers.push(data);
         console.log("create::",data);
       }),
       catchError(this.handleError)

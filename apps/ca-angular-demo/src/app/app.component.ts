@@ -12,7 +12,7 @@ import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 
 @Component({
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, FormlyModule, FormlyBootstrapModule,ApplicationModule, InfrastructureModule, NavComponent, CustomersComponent, RouterModule],
+  imports: [RouterModule, ApplicationModule, InfrastructureModule, FormsModule, ReactiveFormsModule, FormlyModule, FormlyBootstrapModule, NavComponent, CustomersComponent],
   selector: 'ca-angular-demo-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

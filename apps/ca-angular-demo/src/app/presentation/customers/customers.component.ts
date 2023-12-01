@@ -11,7 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 @Component({
   selector: 'ca-angular-demo-customers',
   standalone: true,
-  imports: [RouterModule, CommonModule, ApplicationModule, InfrastructureModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './customers.component.html',
   styleUrl: './customers.component.css',
 })
