@@ -34,7 +34,7 @@ export class CustomerService implements ICustomerService {
 
   delete(id: string): Observable<Object> {
     return this.http.delete(`${this.apiUrl}/${id}`, this.httpOptions).pipe(
-      tap(data => console.log(data)),
+      tap(data => console.log("delete::", id)),
       catchError(this.handleError)
     );
   }
@@ -44,7 +44,7 @@ export class CustomerService implements ICustomerService {
 
     return this.http.patch<Customer>(`${this.apiUrl}/${customer.id}`, customer, this.httpOptions).pipe(
       tap((data: Customer) => {
-        console.log(data);
+        console.log("update::",data);
       }),
       catchError(this.handleError)
     );
@@ -57,7 +57,7 @@ export class CustomerService implements ICustomerService {
         // this.itemArray.items[indexToUpdate] = newItem;
 
         // this.customers.update(r => [...r, data]);
-        console.log(data);
+        console.log("create::",data);
       }),
       catchError(this.handleError)
     );

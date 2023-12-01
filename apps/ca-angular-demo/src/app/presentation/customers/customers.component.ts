@@ -56,25 +56,25 @@ export class CustomersComponent implements OnInit {
   //   // this.customer = toSignal(user$, { initialValue: {} as Customer });
   // }
 
-  updateCustomer(): void {
-    const customer: Customer = {
-      id: '11',
-      name: "John Doe Update",
-      email: "john.doe@email.com",
-      phone: "1234567890",
-      website: "www.johndoe.com",
-      company: {}
-    };
+  // updateCustomer(): void {
+  //   const customer: Customer = {
+  //     id: '11',
+  //     name: "John Doe Update",
+  //     email: "john.doe@email.com",
+  //     phone: "1234567890",
+  //     website: "www.johndoe.com",
+  //     company: {}
+  //   };
 
-    this.customerUseCase.updateCustomer(customer).subscribe((data: any) => {
-      console.log('update data in list ::', data);
-      this.customer = data;
-      // this.customers.update(r => {
-      //   console.log('r ::', r);
-      //   return [...(r.filter((item: Customer) => item.id.toString() !== data.id)), data];
-      // });
-    });
-  }
+  //   this.customerUseCase.updateCustomer(customer).subscribe((data: any) => {
+  //     console.log('update data in list ::', data);
+  //     this.customer = data;
+  //     // this.customers.update(r => {
+  //     //   console.log('r ::', r);
+  //     //   return [...(r.filter((item: Customer) => item.id.toString() !== data.id)), data];
+  //     // });
+  //   });
+  // }
 
   deleteCustomer(id: string) {
     //const id = "11";

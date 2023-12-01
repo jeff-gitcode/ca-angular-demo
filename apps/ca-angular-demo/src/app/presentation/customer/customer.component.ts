@@ -83,14 +83,14 @@ export class CustomerComponent implements OnInit {
   submit() {
     console.log(this.form.value);
 
-    if (this.model.id === 'new') {
-      this.customerUseCase.createCustomer(this.model).subscribe((data: any) => {
+    if (this.id === 'new') {
+      this.customerUseCase.createCustomer(this.form.value).subscribe((data: any) => {
         console.log('create data in list ::', data);
         this.model = data;
       });
     } else {
-      this.customerUseCase.updateCustomer(this.model).subscribe((data: any) => {
-        console.log('create data in list ::', data);
+      this.customerUseCase.updateCustomer(this.form.value).subscribe((data: any) => {
+        console.log('update data in list ::', data);
         this.model = data;
       });
     }
