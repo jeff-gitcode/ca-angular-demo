@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+
+import { IAuthUseCase } from '../../application/abstract/iauth.usecase';
 
 @Component({
   selector: 'ca-angular-demo-nav',
@@ -9,4 +11,17 @@ import { RouterModule } from '@angular/router';
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css',
 })
-export class NavComponent {}
+
+export class NavComponent implements OnInit {
+  constructor(private authUseCase: IAuthUseCase) {
+
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  logout() {
+    this.authUseCase.logout();
+  }
+}

@@ -14,16 +14,15 @@ import { AuthService } from './infrastructure/auth.service';
 import { AuthGuard } from './auth.guard';
 import { IAuthUseCase } from './application/abstract/iauth.usecase';
 import { AuthUseCase } from './application/auth/auth.usecase';
-import { AppModule } from './app.module';
 
 @Component({
   standalone: true,
-  imports: [AppModule, FormsModule, RouterModule, ReactiveFormsModule, FormlyModule, FormlyBootstrapModule, NavComponent],
+  imports: [RouterModule, ApplicationModule, InfrastructureModule, FormsModule, ReactiveFormsModule, FormlyModule, FormlyBootstrapModule, NavComponent, CustomersComponent],
   selector: 'ca-angular-demo-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [
-    { provide: IAuthService, useClass: AuthService },
+    // { provide: IAuthService, useClass: AuthService },
     // { provide: IAuthUseCase,  useClass: AuthUseCase}
   ],
 })

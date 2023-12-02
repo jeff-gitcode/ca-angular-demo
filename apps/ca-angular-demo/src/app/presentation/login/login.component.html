@@ -3,14 +3,18 @@
   <div>
     <h1>Login</h1>
   </div>
-<form [formGroup]="form">
-  <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
-  <!-- <div class="form-buttons"> -->
-    <button class="btn btn-danger"
-            (click)="login()"  [disabled]="!form.valid">Login</button>
-<!-- </div> -->
-</form>
-<!-- <form [formGroup]="form">
+  <form [formGroup]="form">
+    <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+    <!-- <div class="form-buttons"> -->
+    <button class="btn btn-danger" (click)="login()" [disabled]="!form.valid">
+      Login
+    </button>
+    <button class="btn button-primary" (click)="logout()">
+      Logout
+    </button>
+    <!-- </div> -->
+  </form>
+  <!-- <form [formGroup]="form">
   <fieldset>
       <legend>Login</legend>
       <div class="form-field">

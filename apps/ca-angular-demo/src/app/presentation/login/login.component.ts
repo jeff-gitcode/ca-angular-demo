@@ -62,11 +62,11 @@ export class LoginComponent implements OnInit {
 
     if (val.email && val.password) {
       // this.router.navigateByUrl('/customer');
-      // if (this.authUseCase.login(val.email, val.password)) {
+      if (this.authUseCase.login(val.email, val.password)) {
       //   console.log("User is logged in");
         this.router.navigate(['/customer']);
         // this.router.navigateByUrl('/customer');
-      // }
+      }
       // .subscribe(
       //     () => {
       //         console.log("User is logged in");
@@ -74,5 +74,9 @@ export class LoginComponent implements OnInit {
       //     }
       // );
     }
+  }
+
+  logout(){
+    this.authUseCase.logout();
   }
 }

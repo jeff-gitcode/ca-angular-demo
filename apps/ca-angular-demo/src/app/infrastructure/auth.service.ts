@@ -42,7 +42,6 @@ export class AuthService implements IAuthService {
   }
 
   public isLoggedIn(): boolean {
-    return true;
     return moment().isBefore(this.getExpiration());
   }
 
@@ -52,6 +51,9 @@ export class AuthService implements IAuthService {
 
   getExpiration() : Moment{
     const expiration: string = localStorage.getItem("expires_at") ?? "";
+    if (!expiration) {
+      return moment(0);
+    }
     const expiresAt = JSON.parse(expiration);
     return moment(expiresAt);
   }
