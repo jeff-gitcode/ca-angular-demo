@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Signal, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 import { IAuthUseCase } from '../../application/abstract/iauth.usecase';
 
@@ -13,15 +13,17 @@ import { IAuthUseCase } from '../../application/abstract/iauth.usecase';
 })
 
 export class NavComponent implements OnInit {
-  constructor(private authUseCase: IAuthUseCase) {
-
+  @Input() $isLoggedIn: Signal<boolean>;
+  constructor(private authUseCase: IAuthUseCase, private router: Router) {
+    this.$isLoggedIn = this.authUseCase.loginSignal();
   }
 
   ngOnInit(): void {
-
+    this.$isLoggedIn = this.authUseCase.loginSignal();
   }
 
   logout() {
     this.authUseCase.logout();
+    this.router.navigate(['/login']);
   }
 }

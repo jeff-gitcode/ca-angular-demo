@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import moment, { Moment } from "moment";
 
 import { IAuthService } from "../application/abstract/iauth.service";
@@ -11,7 +11,7 @@ export interface AuthResponse {
 
 @Injectable()
 export class AuthService implements IAuthService {
-
+  $isLoggedIn = signal(false);
   constructor(private http: HttpClient) {
 
   }
@@ -26,6 +26,7 @@ export class AuthService implements IAuthService {
     };
 
     this.setSession(authResult);
+    this.$isLoggedIn.set(true);
     return true;
   }
 
@@ -39,6 +40,7 @@ export class AuthService implements IAuthService {
   logout(): void {
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
+    this.$isLoggedIn.set(false);
   }
 
   public isLoggedIn(): boolean {
@@ -49,7 +51,7 @@ export class AuthService implements IAuthService {
     return !this.isLoggedIn();
   }
 
-  getExpiration() : Moment{
+  getExpiration(): Moment {
     const expiration: string = localStorage.getItem("expires_at") ?? "";
     if (!expiration) {
       return moment(0);

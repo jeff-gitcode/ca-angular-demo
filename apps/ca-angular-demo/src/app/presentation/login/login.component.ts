@@ -75,8 +75,4 @@ export class LoginComponent implements OnInit {
       // );
     }
   }
-
-  logout(){
-    this.authUseCase.logout();
-  }
 }
