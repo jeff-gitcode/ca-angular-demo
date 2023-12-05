@@ -13,13 +13,16 @@ import { IAuthUseCase } from '../../application/abstract/iauth.usecase';
 })
 
 export class NavComponent implements OnInit {
-  @Input() $isLoggedIn: Signal<boolean>;
+  @Input() isLoggedIn: boolean | undefined;
   constructor(private authUseCase: IAuthUseCase, private router: Router) {
-    this.$isLoggedIn = this.authUseCase.loginSignal();
+    this.authUseCase.isLoggedInStatus().subscribe((status) => {
+      console.log('status', status);
+      this.isLoggedIn = status;
+    });
   }
 
   ngOnInit(): void {
-    this.$isLoggedIn = this.authUseCase.loginSignal();
+    // this.isLoggedIn = this.authUseCase.loginSignal();
   }
 
   logout() {

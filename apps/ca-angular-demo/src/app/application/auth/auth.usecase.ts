@@ -3,10 +3,16 @@ import { Injectable, Signal } from "@angular/core";
 
 import { IAuthService } from "../abstract/iauth.service";
 import { IAuthUseCase } from "../abstract/iauth.usecase";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class AuthUseCase implements IAuthUseCase {
   constructor(private authService: IAuthService) {}
+
+  isLoggedInStatus(): BehaviorSubject<boolean> {
+    return this.authService.isLoggedIn$;
+  }
+
 
   loginSignal(): Signal<boolean> {
     return this.authService.$isLoggedIn;

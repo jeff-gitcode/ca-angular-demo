@@ -3,6 +3,7 @@ import { Injectable, signal } from "@angular/core";
 import moment, { Moment } from "moment";
 
 import { IAuthService } from "../application/abstract/iauth.service";
+import { BehaviorSubject } from "rxjs";
 
 export interface AuthResponse {
   expiresIn: string;
@@ -11,6 +12,7 @@ export interface AuthResponse {
 
 @Injectable()
 export class AuthService implements IAuthService {
+  isLoggedIn$ = new BehaviorSubject(false);
   $isLoggedIn = signal(false);
   constructor(private http: HttpClient) {
 
@@ -27,6 +29,7 @@ export class AuthService implements IAuthService {
 
     this.setSession(authResult);
     this.$isLoggedIn.set(true);
+    this.isLoggedIn$.next(true);
     return true;
   }
 
@@ -41,6 +44,7 @@ export class AuthService implements IAuthService {
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
     this.$isLoggedIn.set(false);
+    this.isLoggedIn$.next(false);
   }
 
   public isLoggedIn(): boolean {
