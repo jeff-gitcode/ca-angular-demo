@@ -6,9 +6,11 @@ import { ICustomerService } from "../application/abstract/icustomer.service";
 import { CustomerService } from "./customer.service";
 import { IAuthService } from "../application/abstract/iauth.service";
 import { AuthService } from "./auth.service";
+import { LocalStorageService } from "./local-storage.service";
 
 @NgModule({
   providers: [
+    LocalStorageService,
     { provide: IAuthService, useClass: AuthService  },
     { provide: ICustomerRepository, useClass: CustomerRepository },
     { provide: ICustomerService, useClass: CustomerService }

@@ -4,6 +4,7 @@ import moment, { Moment } from "moment";
 
 import { IAuthService } from "../application/abstract/iauth.service";
 import { BehaviorSubject } from "rxjs";
+import { LocalStorageService } from "./local-storage.service";
 
 export interface AuthResponse {
   expiresIn: string;
@@ -14,7 +15,7 @@ export interface AuthResponse {
 export class AuthService implements IAuthService {
   isLoggedIn$ = new BehaviorSubject(false);
   $isLoggedIn = signal(false);
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private localStorageService: LocalStorageService) {
 
   }
 
@@ -36,13 +37,13 @@ export class AuthService implements IAuthService {
   private setSession(authResult: AuthResponse) {
     const expiresAt = moment().add(authResult.expiresIn, 'second');
 
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+    this.localStorageService.setItem('id_token', authResult.idToken);
+    this.localStorageService.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
   }
 
   logout(): void {
-    localStorage.removeItem("id_token");
-    localStorage.removeItem("expires_at");
+    this.localStorageService.removeItem("id_token");
+    this.localStorageService.removeItem("expires_at");
     this.$isLoggedIn.set(false);
     this.isLoggedIn$.next(false);
   }
@@ -56,7 +57,7 @@ export class AuthService implements IAuthService {
   }
 
   getExpiration(): Moment {
-    const expiration: string = localStorage.getItem("expires_at") ?? "";
+    const expiration: string = this.localStorageService.getItem("expires_at") ?? "";
     if (!expiration) {
       return moment(0);
     }
