@@ -48,7 +48,7 @@ export class AuthService implements IAuthService {
     this.isLoggedIn$.next(false);
   }
 
-  public isLoggedIn(): boolean {
+  isLoggedIn(): boolean {
     return moment().isBefore(this.getExpiration());
   }
 

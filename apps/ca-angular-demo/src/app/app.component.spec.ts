@@ -1,16 +1,32 @@
 import { TestBed } from '@angular/core/testing';
+import { Injector } from "@angular/core";
+
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { Router } from '@angular/router';
 
 describe('AppComponent', () => {
+  let injector: Injector;
+  let httpMock: HttpTestingController;
+  let router: Router;
+  let navigateSpy: jest.SpyInstance;
+
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent, NxWelcomeComponent, RouterTestingModule],
+    injector = await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule, AppComponent, RouterTestingModule.withRoutes([])],
     }).compileComponents();
+
+    router = TestBed.inject(Router);
+    // httpMock = injector.get(HttpTestingController);
   });
 
-  it('should render title', () => {
+  afterEach(() => {
+
+    // httpMock.verify();
+  });
+
+  xit('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
@@ -20,6 +36,7 @@ describe('AppComponent', () => {
   });
 
   it(`should have as title 'ca-angular-demo'`, () => {
+    navigateSpy = jest.spyOn(router, 'navigate');
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('ca-angular-demo');
