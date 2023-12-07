@@ -12,7 +12,8 @@
 - [x] Vite
 - [x] Esbuild 
 - [x] Bootstrap
-- 
+- [x] jest
+- ![alt text](./doc/unit-test.png)
 ```dotnetcli
 wsl --install
 https://docs.docker.com/desktop/install/windows-install/
