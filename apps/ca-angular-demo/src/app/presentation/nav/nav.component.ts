@@ -13,7 +13,8 @@ import { IAuthUseCase } from '../../application/abstract/iauth.usecase';
 })
 
 export class NavComponent implements OnInit {
-  @Input() isLoggedIn: boolean | undefined;
+  @Input() isLoggedIn?: boolean | undefined;
+
   constructor(private authUseCase: IAuthUseCase, private router: Router) {
     this.authUseCase.isLoggedInStatus().subscribe((status) => {
       console.log('status', status);
