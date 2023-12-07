@@ -57,6 +57,9 @@ $ yarn add @ng-bootstrap/ng-bootstrap@next
 
 #ngx-formly
 $ yarn add @angular/forms @ngx-formly/core @ngx-formly/bootstrap
+
+#storybook
+$ nx g @nx/angular:storybook-configuration ca-angular-demo
 ```
 
 
