@@ -14,6 +14,7 @@
 - [x] Bootstrap
 - [x] jest
 - ![alt text](./doc/unit-test.png)
+- ![alt text](./doc/ca-angular-playwright-demo.gif)
 ```dotnetcli
 wsl --install
 https://docs.docker.com/desktop/install/windows-install/

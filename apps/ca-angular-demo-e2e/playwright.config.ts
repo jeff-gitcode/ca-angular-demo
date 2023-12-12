@@ -19,9 +19,17 @@ export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: './src' }),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    headless: false,
+
+    // Artifacts
+    screenshot: 'on',
+    video: {
+      mode: 'on',
+      size: { width: 640, height: 480 }
+    },
     baseURL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    // trace: 'on-first-retry',
   },
   /* Run your local dev server before starting the tests */
   webServer: {

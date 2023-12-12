@@ -130,6 +130,13 @@
           "buildTarget": "ca-angular-demo:build-storybook:ci"
         }
       }
-    }
+    },
+    "e2e": {
+      "executor": "@nx/playwright:playwright",
+      "outputs": ["{workspaceRoot}/dist/.playwright/apps/ca-angular-demo-e2e"],
+      "options": {
+        "config": "apps/ca-angular-demo-e2e/playwright.config.ts"
+      }
+    },
   }
 }

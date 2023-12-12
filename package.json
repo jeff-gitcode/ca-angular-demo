@@ -9,7 +9,9 @@
     "test:client": "nx test ca-angular-demo",
     "precommit": "nx lint ca-angular-demo",
     "start:angular": "nx serve ca-angular-demo",
-    "test:e2e:angular": "nx run ca-angular-demo-e2e:e2e",
+    "test:e2e:angular-nocache": "nx e2e ca-angular-demo --ui --skip-nx-cache",
+    "test:e2e:angular": "nx e2e ca-angular-demo --ui",
+    "test:e2e:angularold": "nx run ca-angular-demo-e2e:e2e",
     "test:component:angular": "nx run ca-angular-demo:component-test",
     "test:storybook:angular": "nx run ca-angular-demo:storybook"
   },
