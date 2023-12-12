@@ -61,6 +61,9 @@ $ yarn add @angular/forms @ngx-formly/core @ngx-formly/bootstrap
 
 #storybook
 $ nx g @nx/angular:storybook-configuration ca-angular-demo
+
+# playwright
+$ nx e2e ca-angular-demo --ui --skip-nx-cache
 ```
 
 
